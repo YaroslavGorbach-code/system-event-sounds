@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">system event sounds</string>
+    <string name="app_name">System event sounds</string>
+    <string name="wifi_on">Wifi on</string>
+    <string name="wifi_off">Wifi off</string>
+    <string name="airplane_mod_on">Airplane mod on</string>
+    <string name="airplane_mod_off">Airplane mod off</string>
+    <string name="active">Active</string>
+    <string name="not_active">Not active</string>
 </resources>
