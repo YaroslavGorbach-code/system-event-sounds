@@ -6,4 +6,18 @@
     <string name="airplane_mod_off">Airplane mod off</string>
     <string name="active">Active</string>
     <string name="not_active">Not active</string>
+    <string name="notification_title">Battery sound notifications</string>
+    <string name="notification_message">App is working…</string>
+    <string name="ticker_text">Battery sound notifications</string>
+    <string name="mobile_inet_off">Mobile internet off</string>
+    <string name="mobile_inet_on">Mobile internet on</string>
+    <string name="bluetooth_on">Bluetooth_on</string>
+    <string name="bluetooth_off">Bluetooth off</string>
+    <string name="screen_on">Screen on</string>
+    <string name="screen_off">Screen off</string>
+    <string name="usb_attached">Usb attached</string>
+    <string name="usb_detached">Usb detached</string>
+    <string name="app_installed">App installed</string>
+    <string name="app_deleted">App deleted</string>
+    <string name="headphones_plugged">Headphones plugged</string>
 </resources>
