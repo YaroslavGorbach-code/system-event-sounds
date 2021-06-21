@@ -20,12 +20,13 @@ enum class EventName(@StringRes val idRes: Int) {
     APP_INSTALLED(R.string.app_installed),
     APP_DELETED(R.string.app_deleted),
     HEADPHONES_PLUGGED(R.string.headphones_plugged),
-    HEADPHONES_UNPLUGGED(R.string.headphones_plugged),
+    HEADPHONES_UNPLUGGED(R.string.headphones_unplugged),
 }
 
 data class SystemEvent(
     val name: EventName,
     val textToSpeech: String?,
     val fileUri: Uri?,
-    val active: Boolean = false
+    val active: Boolean = false,
+    var consumed: Boolean = false
 )

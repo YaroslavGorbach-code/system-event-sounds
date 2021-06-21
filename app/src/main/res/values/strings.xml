@@ -20,4 +20,5 @@
     <string name="app_installed">App installed</string>
     <string name="app_deleted">App deleted</string>
     <string name="headphones_plugged">Headphones plugged</string>
+    <string name="headphones_unplugged">Headphones unplugged</string>
 </resources>
