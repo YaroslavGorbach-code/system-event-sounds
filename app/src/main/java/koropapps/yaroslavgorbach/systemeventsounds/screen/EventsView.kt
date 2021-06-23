@@ -1,8 +1,10 @@
 package koropapps.yaroslavgorbach.systemeventsounds.screen
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import koropapps.yaroslavgorbach.systemeventsounds.R
 import koropapps.yaroslavgorbach.systemeventsounds.data.SystemEvent
 import koropapps.yaroslavgorbach.systemeventsounds.databinding.FragmentEventsBinding
+import koropapps.yaroslavgorbach.systemeventsounds.feature.LineDecorator
 
 class EventsView(binding: FragmentEventsBinding, callback: Callback) {
     interface Callback{
@@ -22,6 +24,7 @@ class EventsView(binding: FragmentEventsBinding, callback: Callback) {
     init {
         binding.list.adapter = adapter
         binding.list.layoutManager = LinearLayoutManager(binding.root.context)
+        binding.list.addItemDecoration(LineDecorator(binding.root.context, R.drawable.line_devider))
     }
 
     fun setEvents(events: List<SystemEvent>){

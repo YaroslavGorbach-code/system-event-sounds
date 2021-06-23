@@ -1,6 +1,7 @@
 package koropapps.yaroslavgorbach.systemeventsounds.data
 
 import android.net.Uri
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import koropapps.yaroslavgorbach.systemeventsounds.R
 
@@ -25,6 +26,7 @@ enum class EventName(@StringRes val idRes: Int) {
 
 data class SystemEvent(
     val name: EventName,
+    @DrawableRes val imageId: Int,
     val textToSpeech: String?,
     val fileUri: Uri?,
     val active: Boolean = false,

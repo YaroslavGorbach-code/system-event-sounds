@@ -3,6 +3,7 @@ package koropapps.yaroslavgorbach.systemeventsounds.screen
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -49,6 +50,7 @@ class EventsAdapter(private val callback: Callback) :
 
         fun bind(item: SystemEvent) {
             binding.eventName.setText(item.name.idRes)
+            binding.icEvent.setImageDrawable(ContextCompat.getDrawable(binding.root.context, item.imageId))
             if (!item.textToSpeech.isNullOrEmpty()) binding.eventTextFileName.text = item.textToSpeech
             if (item.fileUri != null) binding.eventTextFileName.text = item.fileUri.getName(itemView.context)
 
