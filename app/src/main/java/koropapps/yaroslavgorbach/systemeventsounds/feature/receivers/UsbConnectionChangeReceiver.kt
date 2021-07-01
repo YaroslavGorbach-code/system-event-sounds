@@ -1,4 +1,4 @@
-package koropapps.yaroslavgorbach.systemeventsounds.receivers
+package koropapps.yaroslavgorbach.systemeventsounds.feature.receivers
 
 import android.content.BroadcastReceiver
 import android.content.Context

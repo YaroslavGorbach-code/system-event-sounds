@@ -1,4 +1,4 @@
-package koropapps.yaroslavgorbach.systemeventsounds.screen
+package koropapps.yaroslavgorbach.systemeventsounds.feature.ui.events
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import koropapps.yaroslavgorbach.systemeventsounds.R
 import koropapps.yaroslavgorbach.systemeventsounds.data.SystemEvent
 import koropapps.yaroslavgorbach.systemeventsounds.databinding.ItemEventBinding
-import koropapps.yaroslavgorbach.systemeventsounds.util.getName
-import koropapps.yaroslavgorbach.systemeventsounds.util.getString
+import koropapps.yaroslavgorbach.systemeventsounds.feature.util.getName
 
 class EventsAdapter(private val callback: Callback) :
     ListAdapter<SystemEvent, EventsAdapter.Vh>(object : DiffUtil.ItemCallback<SystemEvent>() {

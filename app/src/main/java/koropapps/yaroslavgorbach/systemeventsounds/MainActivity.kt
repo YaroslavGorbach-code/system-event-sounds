@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.commit
-import koropapps.yaroslavgorbach.systemeventsounds.screen.EventsFragment
-import koropapps.yaroslavgorbach.systemeventsounds.services.MainService
+import koropapps.yaroslavgorbach.systemeventsounds.feature.ui.events.EventsFragment
+import koropapps.yaroslavgorbach.systemeventsounds.feature.services.MainService
 import kotlinx.coroutines.InternalCoroutinesApi
 
 class MainActivity : AppCompatActivity() {

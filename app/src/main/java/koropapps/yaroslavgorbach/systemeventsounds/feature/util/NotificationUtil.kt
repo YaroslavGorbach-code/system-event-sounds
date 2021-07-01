@@ -1,4 +1,4 @@
-package koropapps.yaroslavgorbach.systemeventsounds.util
+package koropapps.yaroslavgorbach.systemeventsounds.feature.util
 
 import android.app.Notification
 import android.app.PendingIntent

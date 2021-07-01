@@ -1,4 +1,4 @@
-package koropapps.yaroslavgorbach.systemeventsounds.screen
+package koropapps.yaroslavgorbach.systemeventsounds.feature.ui.events
 
 import android.os.Bundle
 import android.view.View
@@ -14,7 +14,7 @@ class EventsFragment: Fragment(R.layout.fragment_events) {
         super.onViewCreated(view, savedInstanceState)
 
         // init view
-        val v = EventsView(FragmentEventsBinding.bind(view), object : EventsView.Callback{
+        val v = EventsView(FragmentEventsBinding.bind(view), object : EventsView.Callback {
             override fun onSwitch(item: SystemEvent, isChecked: Boolean) {
 
             }
@@ -23,6 +23,6 @@ class EventsFragment: Fragment(R.layout.fragment_events) {
 
             }
         })
-        v.setEvents(getRepo().getEvents())
+        getRepo().getEvents().observe(viewLifecycleOwner, v::setEvents)
     }
 }

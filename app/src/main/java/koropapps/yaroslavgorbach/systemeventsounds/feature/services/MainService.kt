@@ -1,4 +1,4 @@
-package koropapps.yaroslavgorbach.systemeventsounds.services
+package koropapps.yaroslavgorbach.systemeventsounds.feature.services
 
 import android.app.Service
 import android.bluetooth.BluetoothAdapter
@@ -7,8 +7,8 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.IBinder
-import koropapps.yaroslavgorbach.systemeventsounds.receivers.*
-import koropapps.yaroslavgorbach.systemeventsounds.util.getServiceNotification
+import koropapps.yaroslavgorbach.systemeventsounds.feature.receivers.*
+import koropapps.yaroslavgorbach.systemeventsounds.feature.util.getServiceNotification
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi

@@ -1,4 +1,4 @@
-package koropapps.yaroslavgorbach.systemeventsounds.feature
+package koropapps.yaroslavgorbach.systemeventsounds.feature.common
 
 import android.content.Context
 import android.graphics.Canvas

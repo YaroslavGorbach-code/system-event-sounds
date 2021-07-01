@@ -1,10 +1,10 @@
-package koropapps.yaroslavgorbach.systemeventsounds.screen
+package koropapps.yaroslavgorbach.systemeventsounds.feature.ui.events
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import koropapps.yaroslavgorbach.systemeventsounds.R
 import koropapps.yaroslavgorbach.systemeventsounds.data.SystemEvent
 import koropapps.yaroslavgorbach.systemeventsounds.databinding.FragmentEventsBinding
-import koropapps.yaroslavgorbach.systemeventsounds.feature.LineDecorator
+import koropapps.yaroslavgorbach.systemeventsounds.feature.common.LineDecorator
 
 class EventsView(binding: FragmentEventsBinding, callback: Callback) {
     interface Callback{
