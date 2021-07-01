@@ -1,4 +1,4 @@
-package koropapps.yaroslavgorbach.systemeventsounds.data
+package koropapps.yaroslavgorbach.systemeventsounds.data.local.models
 
 import android.net.Uri
 import androidx.annotation.DrawableRes

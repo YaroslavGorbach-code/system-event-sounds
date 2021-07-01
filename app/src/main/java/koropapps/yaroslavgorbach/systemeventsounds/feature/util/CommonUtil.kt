@@ -1,8 +1,13 @@
 package koropapps.yaroslavgorbach.systemeventsounds.feature.util
 
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.net.Uri
 import android.provider.OpenableColumns
+import androidx.fragment.app.Fragment
+import koropapps.yaroslavgorbach.systemeventsounds.App
+import koropapps.yaroslavgorbach.systemeventsounds.data.local.repos.RepoImp
+import koropapps.yaroslavgorbach.systemeventsounds.bussines.repos.Repo
 
 fun Uri.getName(context: Context): String {
     val returnCursor = context.contentResolver.query(this, null, null, null, null)
@@ -12,3 +17,5 @@ fun Uri.getName(context: Context): String {
     returnCursor?.close()
     return fileName.toString()
 }
+fun Fragment.getRepo(): Repo = (requireActivity().application as App).provideRepo()
+fun BroadcastReceiver.getRepo(context: Context?): Repo = RepoImp

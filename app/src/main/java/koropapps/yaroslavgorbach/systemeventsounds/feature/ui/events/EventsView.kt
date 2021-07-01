@@ -2,7 +2,7 @@ package koropapps.yaroslavgorbach.systemeventsounds.feature.ui.events
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import koropapps.yaroslavgorbach.systemeventsounds.R
-import koropapps.yaroslavgorbach.systemeventsounds.data.SystemEvent
+import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.SystemEvent
 import koropapps.yaroslavgorbach.systemeventsounds.databinding.FragmentEventsBinding
 import koropapps.yaroslavgorbach.systemeventsounds.feature.common.LineDecorator
 

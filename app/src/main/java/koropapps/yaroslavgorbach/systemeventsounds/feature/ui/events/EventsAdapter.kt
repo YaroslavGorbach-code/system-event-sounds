@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import koropapps.yaroslavgorbach.systemeventsounds.R
-import koropapps.yaroslavgorbach.systemeventsounds.data.SystemEvent
+import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.SystemEvent
 import koropapps.yaroslavgorbach.systemeventsounds.databinding.ItemEventBinding
 import koropapps.yaroslavgorbach.systemeventsounds.feature.util.getName
 

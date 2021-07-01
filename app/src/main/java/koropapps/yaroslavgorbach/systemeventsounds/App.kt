@@ -4,9 +4,9 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
-import koropapps.yaroslavgorbach.systemeventsounds.data.Repo
-import koropapps.yaroslavgorbach.systemeventsounds.data.RepoImp
-import koropapps.yaroslavgorbach.systemeventsounds.data.RepoProvider
+import koropapps.yaroslavgorbach.systemeventsounds.bussines.repos.Repo
+import koropapps.yaroslavgorbach.systemeventsounds.data.local.repos.RepoImp
+import koropapps.yaroslavgorbach.systemeventsounds.bussines.repos.RepoProvider
 
 class App: Application(), RepoProvider {
     private val repo: Repo by lazy { RepoImp }
