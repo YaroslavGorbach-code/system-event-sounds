@@ -11,21 +11,23 @@ import koropapps.yaroslavgorbach.systemeventsounds.R
 import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.SystemEvent
 import koropapps.yaroslavgorbach.systemeventsounds.databinding.ItemEventBinding
 import koropapps.yaroslavgorbach.systemeventsounds.feature.util.getName
+import java.util.ArrayList
 
-class EventsAdapter(private val callback: Callback) :
-    ListAdapter<SystemEvent, EventsAdapter.Vh>(object : DiffUtil.ItemCallback<SystemEvent>() {
-        override fun areItemsTheSame(oldItem: SystemEvent, newItem: SystemEvent): Boolean {
-            return true
-        }
-
-        override fun areContentsTheSame(oldItem: SystemEvent, newItem: SystemEvent): Boolean {
-            return true
-        }
-    }) {
-
+class EventsAdapter(private val callback: Callback) : RecyclerView.Adapter<EventsAdapter.Vh>() {
     interface Callback {
         fun onSwitch(item: SystemEvent, isChecked: Boolean)
         fun onEvent(item: SystemEvent)
+    }
+
+    init {
+        setHasStableIds(true)
+    }
+
+    private var items: List<SystemEvent> = ArrayList<SystemEvent>()
+
+    fun setData(list: List<SystemEvent>){
+        items = list
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Vh {
@@ -36,14 +38,18 @@ class EventsAdapter(private val callback: Callback) :
     }
 
     override fun onBindViewHolder(holder: Vh, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(items[position])
     }
+
+    override fun getItemCount() = items.size
+
+    override fun getItemId(position: Int) = position.toLong()
 
     inner class Vh(private val binding: ItemEventBinding, private val callback: Callback) :
         RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
-                callback.onEvent(getItem(adapterPosition))
+                callback.onEvent(items[adapterPosition])
             }
         }
 

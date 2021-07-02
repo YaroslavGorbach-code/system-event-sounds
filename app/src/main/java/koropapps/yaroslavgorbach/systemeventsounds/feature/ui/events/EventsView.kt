@@ -1,5 +1,6 @@
 package koropapps.yaroslavgorbach.systemeventsounds.feature.ui.events
 
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import koropapps.yaroslavgorbach.systemeventsounds.R
 import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.SystemEvent
@@ -8,8 +9,8 @@ import koropapps.yaroslavgorbach.systemeventsounds.feature.common.LineDecorator
 
 class EventsView(binding: FragmentEventsBinding, callback: Callback) {
     interface Callback{
-        fun onSwitch(item: SystemEvent, isChecked: Boolean)
-        fun onEvent(item: SystemEvent)
+        fun onSwitch(event: SystemEvent, isChecked: Boolean)
+        fun onEvent(event: SystemEvent)
     }
     private val adapter: EventsAdapter = EventsAdapter(object : EventsAdapter.Callback{
         override fun onSwitch(item: SystemEvent, isChecked: Boolean) {
@@ -28,6 +29,7 @@ class EventsView(binding: FragmentEventsBinding, callback: Callback) {
     }
 
     fun setEvents(events: List<SystemEvent>){
-        adapter.submitList(events)
+        adapter.setData(events)
+        Log.v("event", "set event view")
     }
 }

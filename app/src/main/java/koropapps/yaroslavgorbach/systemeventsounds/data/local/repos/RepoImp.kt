@@ -1,5 +1,6 @@
 package koropapps.yaroslavgorbach.systemeventsounds.data.local.repos
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import koropapps.yaroslavgorbach.systemeventsounds.R
@@ -123,6 +124,7 @@ object RepoImp : Repo {
     }
 
     override fun updateEvent(event: SystemEvent) {
+        Log.v("event", "set event update")
         events.value = events.value?.toMutableList()?.apply {
             val index = indexOfFirst { event == it }
             if (index != -1) {

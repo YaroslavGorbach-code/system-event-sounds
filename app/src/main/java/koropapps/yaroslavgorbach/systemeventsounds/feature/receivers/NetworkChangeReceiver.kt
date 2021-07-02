@@ -1,5 +1,4 @@
 package koropapps.yaroslavgorbach.systemeventsounds.feature.receivers
-
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -9,7 +8,6 @@ import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.ConsumeEven
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.GetEventUseCase
 import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.EventName
 import koropapps.yaroslavgorbach.systemeventsounds.feature.util.getRepo
-
 
 class NetworkChangeReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {

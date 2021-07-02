@@ -29,6 +29,6 @@ data class SystemEvent(
     @DrawableRes val imageId: Int,
     val textToSpeech: String?,
     val fileUri: Uri?,
-    val active: Boolean = false,
+    var active: Boolean = false,
     var consumed: Boolean = false
 )
