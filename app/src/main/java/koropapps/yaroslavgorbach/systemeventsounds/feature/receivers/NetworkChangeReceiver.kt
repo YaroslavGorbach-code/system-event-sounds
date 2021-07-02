@@ -20,6 +20,7 @@ class NetworkChangeReceiver : BroadcastReceiver() {
         if (wifi != null
             && wifi.isConnectedOrConnecting
             && !getEventUseCase(EventName.WIFI_ON).consumed
+            && getEventUseCase(EventName.WIFI_ON).active
         ) {
             Toast.makeText(context, "WIFI CONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.WIFI_ON, true)
@@ -29,6 +30,7 @@ class NetworkChangeReceiver : BroadcastReceiver() {
         if (wifi != null
             && !wifi.isConnectedOrConnecting
             && !getEventUseCase(EventName.WIFI_OFF).consumed
+            && getEventUseCase(EventName.WIFI_OFF).active
         ) {
             Toast.makeText(context, "WIFI DISCONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.WIFI_OFF, true)
@@ -37,8 +39,8 @@ class NetworkChangeReceiver : BroadcastReceiver() {
 
         if (mobile != null
             && mobile.isConnectedOrConnecting
-            && !getEventUseCase(EventName.MOBILE_INET_ON
-            ).consumed
+            && !getEventUseCase(EventName.MOBILE_INET_ON).consumed
+            && getEventUseCase(EventName.MOBILE_INET_ON).active
         ) {
             Toast.makeText(context, "MOBILE INET CONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.MOBILE_INET_ON, true)
@@ -48,6 +50,7 @@ class NetworkChangeReceiver : BroadcastReceiver() {
         if (mobile != null
             && !mobile.isConnectedOrConnecting
             && !getEventUseCase(EventName.MOBILE_INET_OFF).consumed
+            && getEventUseCase(EventName.MOBILE_INET_OFF).active
         ) {
             Toast.makeText(context, "MOBILE INET DISCONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.MOBILE_INET_OFF, true)

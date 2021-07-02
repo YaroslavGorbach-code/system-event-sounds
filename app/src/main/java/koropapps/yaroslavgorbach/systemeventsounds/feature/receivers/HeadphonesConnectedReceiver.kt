@@ -15,12 +15,15 @@ class HeadphonesConnectedReceiver : BroadcastReceiver() {
         val consumeEventUseCase = ConsumeEventUseCase(getRepo(context))
         val getEventUseCase = GetEventUseCase(getRepo(context))
         intent?.let {
-            if (intent.getIntExtra("state", -1) == 1) {
+            if (intent.getIntExtra("state", -1) == 1
+                && getEventUseCase(EventName.HEADPHONES_PLUGGED).active
+            ) {
                 Toast.makeText(context, "HEADPHONES PLUGGED", Toast.LENGTH_LONG).show()
                 consumeEventUseCase(EventName.HEADPHONES_UNPLUGGED, false)
             }
             if (intent.getIntExtra("state", -1) == 0
                 && getEventUseCase(EventName.HEADPHONES_UNPLUGGED).consumed
+                && getEventUseCase(EventName.HEADPHONES_UNPLUGGED).active
             ) {
                 Toast.makeText(context, "HEADPHONES UNPLUGGED", Toast.LENGTH_LONG).show()
                 consumeEventUseCase(EventName.HEADPHONES_UNPLUGGED, true)
