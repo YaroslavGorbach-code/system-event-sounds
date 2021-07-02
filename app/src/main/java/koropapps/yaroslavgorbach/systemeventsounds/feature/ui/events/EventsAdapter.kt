@@ -57,7 +57,7 @@ class EventsAdapter(private val callback: Callback) : RecyclerView.Adapter<Event
             binding.eventName.setText(item.name.idRes)
             binding.icEvent.setImageDrawable(ContextCompat.getDrawable(binding.root.context, item.imageId))
             if (!item.textToSpeech.isNullOrEmpty()) binding.eventTextFileName.text = item.textToSpeech
-            if (item.fileUri != null) binding.eventTextFileName.text = item.fileUri.getName(itemView.context)
+            if (item.fileUri != null) binding.eventTextFileName.text = item.fileUri!!.getName(itemView.context)
 
             if (item.active) {
                 binding.ovalActive.drawable.setTint(Color.GREEN)

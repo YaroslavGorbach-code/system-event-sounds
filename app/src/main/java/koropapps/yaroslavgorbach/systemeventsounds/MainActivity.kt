@@ -9,11 +9,10 @@ import koropapps.yaroslavgorbach.systemeventsounds.feature.ui.events.EventsFragm
 import koropapps.yaroslavgorbach.systemeventsounds.feature.services.MainService
 import kotlinx.coroutines.InternalCoroutinesApi
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
     @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 val fragment = EventsFragment()

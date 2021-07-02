@@ -21,4 +21,11 @@
     <string name="app_deleted">App deleted</string>
     <string name="headphones_plugged">Headphones plugged</string>
     <string name="headphones_unplugged">Headphones unplugged</string>
+    <string name="text_to_speech">Text to speech</string>
+    <string name="text_to_speak">Text to speech</string>
+    <string name="music">Music file</string>
+    <string name="file_name">File name</string>
+    <string name="pick_file">Pick file</string>
+    <string name="create">Update</string>
+    <string name="updateEvent">Update event</string>
 </resources>

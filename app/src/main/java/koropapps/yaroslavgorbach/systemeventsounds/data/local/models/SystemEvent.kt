@@ -1,6 +1,8 @@
 package koropapps.yaroslavgorbach.systemeventsounds.data.local.models
 
 import android.net.Uri
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import koropapps.yaroslavgorbach.systemeventsounds.R
@@ -27,8 +29,41 @@ enum class EventName(@StringRes val idRes: Int) {
 data class SystemEvent(
     val name: EventName,
     @DrawableRes val imageId: Int,
-    val textToSpeech: String?,
-    val fileUri: Uri?,
+    var textToSpeech: String?,
+    var fileUri: Uri?,
     var active: Boolean = false,
     var consumed: Boolean = false
-)
+):Parcelable {
+    constructor(parcel: Parcel) : this(
+        EventName.valueOf(parcel.readString().toString()),
+        parcel.readInt(),
+        parcel.readString(),
+        parcel.readParcelable(Uri::class.java.classLoader),
+        parcel.readByte() != 0.toByte(),
+        parcel.readByte() != 0.toByte()
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name.name)
+        parcel.writeInt(imageId)
+        parcel.writeString(textToSpeech)
+        parcel.writeParcelable(fileUri, flags)
+        parcel.writeByte(if (active) 1 else 0)
+        parcel.writeByte(if (consumed) 1 else 0)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<SystemEvent> {
+        override fun createFromParcel(parcel: Parcel): SystemEvent {
+            return SystemEvent(parcel)
+        }
+
+        override fun newArray(size: Int): Array<SystemEvent?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
