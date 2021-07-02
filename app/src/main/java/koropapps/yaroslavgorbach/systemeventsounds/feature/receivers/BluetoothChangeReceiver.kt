@@ -7,6 +7,7 @@ import android.content.Intent
 import android.widget.Toast
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.GetEventUseCase
 import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.EventName
+import koropapps.yaroslavgorbach.systemeventsounds.feature.services.MediaPlayerService
 import koropapps.yaroslavgorbach.systemeventsounds.feature.services.TextToSpeechService
 import koropapps.yaroslavgorbach.systemeventsounds.feature.util.getRepo
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -23,6 +24,12 @@ class BluetoothChangeReceiver : BroadcastReceiver() {
                 if (state == BluetoothAdapter.STATE_ON
                     && getEventUseCase(EventName.BLUETOOTH_ON).active
                 ) {
+                    getEventUseCase(EventName.BLUETOOTH_ON).fileUri?.let { uri->
+                        val playerIntent = Intent(context, MediaPlayerService::class.java)
+                        playerIntent.data = uri
+                        context.startService(playerIntent)
+                    }
+
                     getEventUseCase(EventName.BLUETOOTH_ON).textToSpeech?.let { text ->
                         val speechIntent = Intent(context, TextToSpeechService::class.java)
                         speechIntent.putExtra("MESSAGE", text)
@@ -33,6 +40,12 @@ class BluetoothChangeReceiver : BroadcastReceiver() {
                 if (state == BluetoothAdapter.STATE_OFF
                     && getEventUseCase(EventName.BLUETOOTH_OFF).active
                 ) {
+                    getEventUseCase(EventName.BLUETOOTH_OFF).fileUri?.let { uri->
+                        val playerIntent = Intent(context, MediaPlayerService::class.java)
+                        playerIntent.data = uri
+                        context.startService(playerIntent)
+                    }
+
                     getEventUseCase(EventName.BLUETOOTH_OFF).textToSpeech?.let { text ->
                         val speechIntent = Intent(context, TextToSpeechService::class.java)
                         speechIntent.putExtra("MESSAGE", text)

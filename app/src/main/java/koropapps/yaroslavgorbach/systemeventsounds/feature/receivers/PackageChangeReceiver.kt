@@ -6,6 +6,7 @@ import android.content.Intent
 import android.widget.Toast
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.GetEventUseCase
 import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.EventName
+import koropapps.yaroslavgorbach.systemeventsounds.feature.services.MediaPlayerService
 import koropapps.yaroslavgorbach.systemeventsounds.feature.services.TextToSpeechService
 import koropapps.yaroslavgorbach.systemeventsounds.feature.util.getRepo
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -24,6 +25,12 @@ class PackageChangeReceiver : BroadcastReceiver() {
                     speechIntent.putExtra("MESSAGE", text)
                     context.startService(speechIntent)
                 }
+
+                getEventUseCase(EventName.APP_INSTALLED).fileUri?.let { uri->
+                    val playerIntent = Intent(context, MediaPlayerService::class.java)
+                    playerIntent.data = uri
+                    context.startService(playerIntent)
+                }
                 Toast.makeText(context, "APP INSTALLED", Toast.LENGTH_LONG).show()
             }
             if (intent.action == Intent.ACTION_PACKAGE_REMOVED
@@ -33,6 +40,12 @@ class PackageChangeReceiver : BroadcastReceiver() {
                     val speechIntent = Intent(context, TextToSpeechService::class.java)
                     speechIntent.putExtra("MESSAGE", text)
                     context.startService(speechIntent)
+                }
+
+                getEventUseCase(EventName.APP_DELETED).fileUri?.let { uri->
+                    val playerIntent = Intent(context, MediaPlayerService::class.java)
+                    playerIntent.data = uri
+                    context.startService(playerIntent)
                 }
                 Toast.makeText(context, "APP REMOVED", Toast.LENGTH_LONG).show()
             }

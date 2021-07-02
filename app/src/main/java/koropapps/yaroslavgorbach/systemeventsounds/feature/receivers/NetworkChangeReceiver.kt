@@ -7,6 +7,7 @@ import android.widget.Toast
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.ConsumeEventUseCase
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.GetEventUseCase
 import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.EventName
+import koropapps.yaroslavgorbach.systemeventsounds.feature.services.MediaPlayerService
 import koropapps.yaroslavgorbach.systemeventsounds.feature.services.TextToSpeechService
 import koropapps.yaroslavgorbach.systemeventsounds.feature.util.getRepo
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -30,6 +31,13 @@ class NetworkChangeReceiver : BroadcastReceiver() {
                 speechIntent.putExtra("MESSAGE", text)
                 context.startService(speechIntent)
             }
+
+            getEventUseCase(EventName.WIFI_ON).fileUri?.let { uri->
+                val playerIntent = Intent(context, MediaPlayerService::class.java)
+                playerIntent.data = uri
+                context.startService(playerIntent)
+            }
+
             Toast.makeText(context, "WIFI CONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.WIFI_ON, true)
             consumeEventUseCase(EventName.WIFI_OFF, false)
@@ -45,6 +53,13 @@ class NetworkChangeReceiver : BroadcastReceiver() {
                 speechIntent.putExtra("MESSAGE", text)
                 context.startService(speechIntent)
             }
+
+            getEventUseCase(EventName.WIFI_OFF).fileUri?.let { uri->
+                val playerIntent = Intent(context, MediaPlayerService::class.java)
+                playerIntent.data = uri
+                context.startService(playerIntent)
+            }
+
             Toast.makeText(context, "WIFI DISCONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.WIFI_OFF, true)
             consumeEventUseCase(EventName.WIFI_ON, false)
@@ -60,6 +75,12 @@ class NetworkChangeReceiver : BroadcastReceiver() {
                 speechIntent.putExtra("MESSAGE", text)
                 context.startService(speechIntent)
             }
+
+            getEventUseCase(EventName.MOBILE_INET_ON).fileUri?.let { uri->
+                val playerIntent = Intent(context, MediaPlayerService::class.java)
+                playerIntent.data = uri
+                context.startService(playerIntent)
+            }
             Toast.makeText(context, "MOBILE INET CONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.MOBILE_INET_ON, true)
             consumeEventUseCase(EventName.MOBILE_INET_OFF, false)
@@ -74,6 +95,12 @@ class NetworkChangeReceiver : BroadcastReceiver() {
                 val speechIntent = Intent(context, TextToSpeechService::class.java)
                 speechIntent.putExtra("MESSAGE", text)
                 context.startService(speechIntent)
+            }
+
+            getEventUseCase(EventName.MOBILE_INET_OFF).fileUri?.let { uri->
+                val playerIntent = Intent(context, MediaPlayerService::class.java)
+                playerIntent.data = uri
+                context.startService(playerIntent)
             }
             Toast.makeText(context, "MOBILE INET DISCONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.MOBILE_INET_OFF, true)
