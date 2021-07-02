@@ -7,9 +7,12 @@ import android.widget.Toast
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.ConsumeEventUseCase
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.GetEventUseCase
 import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.EventName
+import koropapps.yaroslavgorbach.systemeventsounds.feature.services.TextToSpeechService
 import koropapps.yaroslavgorbach.systemeventsounds.feature.util.getRepo
+import kotlinx.coroutines.InternalCoroutinesApi
 
 class NetworkChangeReceiver : BroadcastReceiver() {
+    @InternalCoroutinesApi
     override fun onReceive(context: Context, intent: Intent?) {
         val connMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val wifi = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
@@ -22,6 +25,11 @@ class NetworkChangeReceiver : BroadcastReceiver() {
             && !getEventUseCase(EventName.WIFI_ON).consumed
             && getEventUseCase(EventName.WIFI_ON).active
         ) {
+            getEventUseCase(EventName.WIFI_ON).textToSpeech?.let { text ->
+                val speechIntent = Intent(context, TextToSpeechService::class.java)
+                speechIntent.putExtra("MESSAGE", text)
+                context.startService(speechIntent)
+            }
             Toast.makeText(context, "WIFI CONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.WIFI_ON, true)
             consumeEventUseCase(EventName.WIFI_OFF, false)
@@ -32,6 +40,11 @@ class NetworkChangeReceiver : BroadcastReceiver() {
             && !getEventUseCase(EventName.WIFI_OFF).consumed
             && getEventUseCase(EventName.WIFI_OFF).active
         ) {
+            getEventUseCase(EventName.WIFI_OFF).textToSpeech?.let { text ->
+                val speechIntent = Intent(context, TextToSpeechService::class.java)
+                speechIntent.putExtra("MESSAGE", text)
+                context.startService(speechIntent)
+            }
             Toast.makeText(context, "WIFI DISCONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.WIFI_OFF, true)
             consumeEventUseCase(EventName.WIFI_ON, false)
@@ -42,6 +55,11 @@ class NetworkChangeReceiver : BroadcastReceiver() {
             && !getEventUseCase(EventName.MOBILE_INET_ON).consumed
             && getEventUseCase(EventName.MOBILE_INET_ON).active
         ) {
+            getEventUseCase(EventName.MOBILE_INET_ON).textToSpeech?.let { text ->
+                val speechIntent = Intent(context, TextToSpeechService::class.java)
+                speechIntent.putExtra("MESSAGE", text)
+                context.startService(speechIntent)
+            }
             Toast.makeText(context, "MOBILE INET CONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.MOBILE_INET_ON, true)
             consumeEventUseCase(EventName.MOBILE_INET_OFF, false)
@@ -52,6 +70,11 @@ class NetworkChangeReceiver : BroadcastReceiver() {
             && !getEventUseCase(EventName.MOBILE_INET_OFF).consumed
             && getEventUseCase(EventName.MOBILE_INET_OFF).active
         ) {
+            getEventUseCase(EventName.MOBILE_INET_OFF).textToSpeech?.let { text ->
+                val speechIntent = Intent(context, TextToSpeechService::class.java)
+                speechIntent.putExtra("MESSAGE", text)
+                context.startService(speechIntent)
+            }
             Toast.makeText(context, "MOBILE INET DISCONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.MOBILE_INET_OFF, true)
             consumeEventUseCase(EventName.MOBILE_INET_ON, false)

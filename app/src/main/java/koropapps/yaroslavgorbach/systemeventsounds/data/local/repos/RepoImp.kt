@@ -66,19 +66,19 @@ object RepoImp : Repo {
             SystemEvent(
                 EventName.SCREEN_OFF,
                 R.drawable.ic_screen_off,
-                null,
+                "null",
                 null
             ),
             SystemEvent(
                 EventName.SCREEN_ON,
                 R.drawable.ic_screen_on,
-                null,
+                "null",
                 null
             ),
             SystemEvent(
                 EventName.USB_ATTACHED,
                 R.drawable.ic_usb,
-                null,
+                "null",
                 null
             ),
             SystemEvent(
@@ -124,7 +124,6 @@ object RepoImp : Repo {
     }
 
     override fun updateEvent(event: SystemEvent) {
-        Log.v("event", "set event update")
         events.value = events.value?.toMutableList()?.apply {
             val index = indexOfFirst { event == it }
             if (index != -1) {
