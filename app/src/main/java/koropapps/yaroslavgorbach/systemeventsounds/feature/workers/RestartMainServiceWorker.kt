@@ -7,7 +7,9 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.StartServiceIsAllowUseCase
 import koropapps.yaroslavgorbach.systemeventsounds.feature.services.MainService
+import koropapps.yaroslavgorbach.systemeventsounds.feature.util.getRepo
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
@@ -17,6 +19,7 @@ import java.util.concurrent.TimeUnit
 class RestartMainServiceWorker(appContext: Context, workerParams: WorkerParameters) :
     Worker(appContext, workerParams) {
     override fun doWork(): Result {
+        if (StartServiceIsAllowUseCase(applicationContext.getRepo())())
         GlobalScope.launch {
             ContextCompat.startForegroundService(
                 applicationContext,

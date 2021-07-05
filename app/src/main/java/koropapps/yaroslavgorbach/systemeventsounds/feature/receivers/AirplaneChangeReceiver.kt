@@ -15,7 +15,7 @@ class AirplaneChangeReceiver : BroadcastReceiver() {
 
     @InternalCoroutinesApi
     override fun onReceive(context: Context, intent: Intent?) {
-        val getEventUseCase = GetEventUseCase(getRepo(context))
+        val getEventUseCase = GetEventUseCase(context.getRepo())
         if (intent?.getBooleanExtra("state", false) == true
             && getEventUseCase(EventName.AIRPLANE_MOD_ON).active
         ) {

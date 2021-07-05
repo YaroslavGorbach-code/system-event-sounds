@@ -16,7 +16,7 @@ class BluetoothChangeReceiver : BroadcastReceiver() {
 
     @InternalCoroutinesApi
     override fun onReceive(context: Context, intent: Intent?) {
-        val getEventUseCase = GetEventUseCase(getRepo(context))
+        val getEventUseCase = GetEventUseCase(context.getRepo())
         intent?.let {
             if (intent.action == BluetoothAdapter.ACTION_STATE_CHANGED) {
                 val state =

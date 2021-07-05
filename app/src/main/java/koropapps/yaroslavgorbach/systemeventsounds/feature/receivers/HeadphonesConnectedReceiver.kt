@@ -16,8 +16,8 @@ class HeadphonesConnectedReceiver : BroadcastReceiver() {
 
     @InternalCoroutinesApi
     override fun onReceive(context: Context, intent: Intent?) {
-        val consumeEventUseCase = ConsumeEventUseCase(getRepo(context))
-        val getEventUseCase = GetEventUseCase(getRepo(context))
+        val consumeEventUseCase = ConsumeEventUseCase(context.getRepo())
+        val getEventUseCase = GetEventUseCase(context.getRepo())
         intent?.let {
             if (intent.getIntExtra("state", -1) == 1
                 && getEventUseCase(EventName.HEADPHONES_PLUGGED).active

@@ -34,8 +34,7 @@ class RepoImp private constructor(context: Context) : Repo {
                 EventName.WIFI_OFF,
                 R.drawable.ic_wifi_off,
                 context.getString(R.string.wifi_off_default_text),
-                null,
-                consumed = true
+                null
             ),
             SystemEvent(
                 EventName.MOBILE_INET_ON,
@@ -47,8 +46,7 @@ class RepoImp private constructor(context: Context) : Repo {
                 EventName.MOBILE_INET_OFF,
                 R.drawable.ic_mobiledata_off,
                 context.getString(R.string.mobile_inet_off_default_text),
-                null,
-                consumed = true
+                null
             ),
             SystemEvent(
                 EventName.AIRPLANE_MOD_ON,

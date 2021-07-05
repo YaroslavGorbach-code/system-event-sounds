@@ -18,8 +18,8 @@ class NetworkChangeReceiver : BroadcastReceiver() {
         val connMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val wifi = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
         val mobile = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
-        val getEventUseCase = GetEventUseCase(getRepo(context))
-        val consumeEventUseCase = ConsumeEventUseCase(getRepo(context))
+        val getEventUseCase = GetEventUseCase(context.getRepo())
+        val consumeEventUseCase = ConsumeEventUseCase(context.getRepo())
 
         if (wifi != null
             && wifi.isConnectedOrConnecting

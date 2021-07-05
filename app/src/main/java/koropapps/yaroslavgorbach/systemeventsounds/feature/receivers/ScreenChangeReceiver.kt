@@ -14,7 +14,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 class ScreenChangeReceiver : BroadcastReceiver() {
     @InternalCoroutinesApi
     override fun onReceive(context: Context, intent: Intent?) {
-        val getEventUseCase = GetEventUseCase(getRepo(context))
+        val getEventUseCase = GetEventUseCase(context.getRepo())
 
         intent?.let {
             if (intent.action == Intent.ACTION_SCREEN_ON
