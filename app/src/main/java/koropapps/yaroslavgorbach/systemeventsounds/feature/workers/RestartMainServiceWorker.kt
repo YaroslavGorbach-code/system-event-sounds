@@ -19,8 +19,9 @@ import java.util.concurrent.TimeUnit
 class RestartMainServiceWorker(appContext: Context, workerParams: WorkerParameters) :
     Worker(appContext, workerParams) {
     override fun doWork(): Result {
-        if (StartServiceIsAllowUseCase(applicationContext.getRepo())())
         GlobalScope.launch {
+        if (StartServiceIsAllowUseCase(applicationContext.getRepo())())
+
             ContextCompat.startForegroundService(
                 applicationContext,
                 Intent(applicationContext, MainService::class.java)

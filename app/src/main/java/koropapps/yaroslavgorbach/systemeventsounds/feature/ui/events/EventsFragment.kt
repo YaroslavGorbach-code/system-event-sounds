@@ -19,8 +19,10 @@ import koropapps.yaroslavgorbach.systemeventsounds.feature.services.MediaPlayerS
 import koropapps.yaroslavgorbach.systemeventsounds.feature.services.TextToSpeechService
 import koropapps.yaroslavgorbach.systemeventsounds.feature.ui.update.UpdateEventDialog
 import koropapps.yaroslavgorbach.systemeventsounds.feature.util.getRepo
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class EventsFragment : Fragment(R.layout.fragment_events), UpdateEventDialog.Host {
 
@@ -33,19 +35,21 @@ class EventsFragment : Fragment(R.layout.fragment_events), UpdateEventDialog.Hos
         // init view
         val v = EventsView(FragmentEventsBinding.bind(view), object : EventsView.Callback {
             override fun onSwitch(event: SystemEvent, isChecked: Boolean) {
-                changeActiveEventStatusUseCase(event.name, isChecked)
-                if (!isChecked) context?.stopMediaServices()
-
                 lifecycleScope.launch {
-                    if (startServiceIsAllowUseCase()) {
-                        ContextCompat.startForegroundService(
-                            requireContext(),
-                            Intent(context, MainService::class.java)
-                        )
-                    } else {
-                        context?.stopService(Intent(context, MainService::class.java))
+                    withContext(Dispatchers.IO) {
+                        changeActiveEventStatusUseCase(event.name, isChecked)
+                        if (!isChecked) context?.stopMediaServices()
+                        if (startServiceIsAllowUseCase()) {
+                            ContextCompat.startForegroundService(
+                                requireContext(),
+                                Intent(context, MainService::class.java)
+                            )
+                        } else {
+                            context?.stopService(Intent(context, MainService::class.java))
+                        }
                     }
                 }
+
             }
 
             override fun onEvent(event: SystemEvent) {
@@ -58,7 +62,9 @@ class EventsFragment : Fragment(R.layout.fragment_events), UpdateEventDialog.Hos
     }
 
     override fun onUpdated(systemEvent: SystemEvent) {
-        UpdateEventUseCase(getRepo())(systemEvent)
+        lifecycleScope.launch {
+            UpdateEventUseCase(getRepo())(systemEvent)
+        }
     }
 
     @InternalCoroutinesApi

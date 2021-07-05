@@ -4,7 +4,7 @@ import koropapps.yaroslavgorbach.systemeventsounds.bussines.repos.Repo
 import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.EventName
 
 class ConsumeEventUseCase(private val repo: Repo) {
-    operator fun invoke(eventName: EventName, consume: Boolean) {
+    suspend operator fun invoke(eventName: EventName, consume: Boolean) {
         val event = repo.getEvent(eventName)
         event.consumed = consume
         repo.updateEvent(event)

@@ -6,8 +6,9 @@ import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.SystemEvent
 
 interface Repo {
     fun getEvents(): LiveData<List<SystemEvent>>
-    fun getEvent(name: EventName): SystemEvent
-    fun updateEvent(event: SystemEvent)
+    suspend fun getEvent(name: EventName): SystemEvent
+    suspend fun updateEvent(event: SystemEvent)
+    suspend fun getActiveEvents(): List<SystemEvent>
 }
 
 

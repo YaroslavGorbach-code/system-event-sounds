@@ -5,6 +5,8 @@ import android.os.Parcel
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import koropapps.yaroslavgorbach.systemeventsounds.R
 
 enum class EventName(@StringRes val idRes: Int) {
@@ -26,14 +28,15 @@ enum class EventName(@StringRes val idRes: Int) {
     HEADPHONES_UNPLUGGED(R.string.headphones_unplugged),
 }
 
+@Entity(tableName = "system_event")
 data class SystemEvent(
-    val name: EventName,
+    @PrimaryKey val name: EventName,
     @DrawableRes val imageId: Int,
     var textToSpeech: String?,
     var fileUri: Uri?,
     var active: Boolean = false,
     var consumed: Boolean = false
-):Parcelable {
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         EventName.valueOf(parcel.readString().toString()),
         parcel.readInt(),

@@ -7,9 +7,10 @@ import android.os.Build
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.repos.Repo
 import koropapps.yaroslavgorbach.systemeventsounds.data.local.repos.RepoImp
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.repos.RepoProvider
+import koropapps.yaroslavgorbach.systemeventsounds.data.local.room.Db
 
 class App: Application(), RepoProvider {
-    private val repo: Repo by lazy { RepoImp.getInstance(applicationContext)}
+    private val repo: Repo by lazy { RepoImp.getInstance(Db.getInstance(applicationContext))}
     override fun provideRepo(): Repo {
         return repo
     }
