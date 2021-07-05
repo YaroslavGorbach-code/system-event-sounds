@@ -31,7 +31,6 @@ class PackageChangeReceiver : BroadcastReceiver() {
                     playerIntent.data = uri
                     context.startService(playerIntent)
                 }
-                Toast.makeText(context, "APP INSTALLED", Toast.LENGTH_LONG).show()
             }
             if (intent.action == Intent.ACTION_PACKAGE_REMOVED
                 && getEventUseCase(EventName.APP_DELETED).active
@@ -47,7 +46,6 @@ class PackageChangeReceiver : BroadcastReceiver() {
                     playerIntent.data = uri
                     context.startService(playerIntent)
                 }
-                Toast.makeText(context, "APP REMOVED", Toast.LENGTH_LONG).show()
             }
         }
     }

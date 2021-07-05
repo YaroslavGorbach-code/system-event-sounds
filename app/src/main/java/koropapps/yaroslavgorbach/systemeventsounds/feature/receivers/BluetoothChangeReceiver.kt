@@ -35,7 +35,6 @@ class BluetoothChangeReceiver : BroadcastReceiver() {
                         speechIntent.putExtra("MESSAGE", text)
                         context.startService(speechIntent)
                     }
-                    Toast.makeText(context, "BLUETOOTH ON", Toast.LENGTH_LONG).show()
                 }
                 if (state == BluetoothAdapter.STATE_OFF
                     && getEventUseCase(EventName.BLUETOOTH_OFF).active
@@ -51,7 +50,6 @@ class BluetoothChangeReceiver : BroadcastReceiver() {
                         speechIntent.putExtra("MESSAGE", text)
                         context.startService(speechIntent)
                     }
-                    Toast.makeText(context, "BLUETOOTH OFF", Toast.LENGTH_LONG).show()
                 }
             }
         }

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?listPreferredItemHeightLarge">
+    android:layout_height="?listPreferredItemHeightLarge"
+    android:background="?selectableItemBackground">
 
     <ImageView
         android:id="@+id/ic_event"
@@ -12,6 +13,8 @@
         android:layout_marginStart="16dp"
         android:src="@android:drawable/star_off"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/event_name"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
@@ -29,22 +32,19 @@
         app:layout_constraintEnd_toStartOf="@+id/start"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ic_event"
-        app:layout_constraintTop_toTopOf="@+id/ic_event"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@+id/text_active" />
 
     <TextView
         android:id="@+id/event_text_file_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:ellipsize="end"
         android:lines="1"
         android:text="@android:string/unknownName"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/text_active"
-        app:layout_constraintEnd_toStartOf="@+id/start"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ic_event"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/event_name"
+        app:layout_constraintStart_toStartOf="@+id/event_name"
         app:layout_constraintTop_toBottomOf="@+id/event_name" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
@@ -54,19 +54,21 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/event_name"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_active"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="Not active"
         android:textColor="?colorControlHighlight"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ic_event"
-        app:layout_constraintStart_toEndOf="@+id/ic_event"
-        app:layout_constraintTop_toBottomOf="@+id/event_text_file_name"
+        app:layout_constraintBottom_toTopOf="@+id/event_name"
+        app:layout_constraintStart_toStartOf="@+id/event_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:ignore="SmallSp" />
 
     <ImageView

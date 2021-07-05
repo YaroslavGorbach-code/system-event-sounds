@@ -32,7 +32,6 @@ class UsbConnectionChangeReceiver : BroadcastReceiver() {
                     playerIntent.data = uri
                     context.startService(playerIntent)
                 }
-                Toast.makeText(context, "USB ATTACHED", Toast.LENGTH_LONG).show()
             }
             if (intent.action == Intent.ACTION_POWER_DISCONNECTED
                 && getEventUseCase(EventName.USB_DETACHED).active
@@ -48,7 +47,6 @@ class UsbConnectionChangeReceiver : BroadcastReceiver() {
                     playerIntent.data = uri
                     context.startService(playerIntent)
                 }
-                Toast.makeText(context, "USB DETACHED", Toast.LENGTH_LONG).show()
             }
         }
     }

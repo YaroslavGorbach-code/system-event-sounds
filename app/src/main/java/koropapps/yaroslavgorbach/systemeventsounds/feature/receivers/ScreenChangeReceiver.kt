@@ -31,7 +31,6 @@ class ScreenChangeReceiver : BroadcastReceiver() {
                     playerIntent.data = uri
                     context.startService(playerIntent)
                 }
-                Toast.makeText(context, "SCREEN_ON", Toast.LENGTH_LONG).show()
             }
             if (intent.action == Intent.ACTION_SCREEN_OFF
                 && getEventUseCase(EventName.SCREEN_OFF).active
@@ -47,7 +46,6 @@ class ScreenChangeReceiver : BroadcastReceiver() {
                     playerIntent.data = uri
                     context.startService(playerIntent)
                 }
-                Toast.makeText(context, "SCREEN_OFF", Toast.LENGTH_LONG).show()
             }
         }
     }

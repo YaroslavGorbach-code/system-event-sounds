@@ -30,7 +30,6 @@ class AirplaneChangeReceiver : BroadcastReceiver() {
                 playerIntent.data = uri
                 context.startService(playerIntent)
             }
-            Toast.makeText(context, "AIRPLANE MOD ON", Toast.LENGTH_LONG).show()
         }
         if (intent?.getBooleanExtra("state", false) == false
             && getEventUseCase(EventName.AIRPLANE_MOD_OFF).active
@@ -46,7 +45,6 @@ class AirplaneChangeReceiver : BroadcastReceiver() {
                 speechIntent.putExtra("MESSAGE", text)
                 context.startService(speechIntent)
             }
-            Toast.makeText(context, "AIRPLANE MOD OFF", Toast.LENGTH_LONG).show()
         }
     }
 }

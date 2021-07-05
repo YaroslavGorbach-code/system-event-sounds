@@ -33,7 +33,6 @@ class HeadphonesConnectedReceiver : BroadcastReceiver() {
                     playerIntent.data = uri
                     context.startService(playerIntent)
                 }
-                Toast.makeText(context, "HEADPHONES PLUGGED", Toast.LENGTH_LONG).show()
                 consumeEventUseCase(EventName.HEADPHONES_UNPLUGGED, false)
             }
             if (intent.getIntExtra("state", -1) == 0
@@ -51,7 +50,6 @@ class HeadphonesConnectedReceiver : BroadcastReceiver() {
                     speechIntent.putExtra("MESSAGE", text)
                     context.startService(speechIntent)
                 }
-                Toast.makeText(context, "HEADPHONES UNPLUGGED", Toast.LENGTH_LONG).show()
                 consumeEventUseCase(EventName.HEADPHONES_UNPLUGGED, true)
             }
         }

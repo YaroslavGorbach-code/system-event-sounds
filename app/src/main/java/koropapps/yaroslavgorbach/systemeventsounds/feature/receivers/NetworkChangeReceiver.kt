@@ -37,8 +37,6 @@ class NetworkChangeReceiver : BroadcastReceiver() {
                 playerIntent.data = uri
                 context.startService(playerIntent)
             }
-
-            Toast.makeText(context, "WIFI CONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.WIFI_ON, true)
             consumeEventUseCase(EventName.WIFI_OFF, false)
         }
@@ -59,8 +57,6 @@ class NetworkChangeReceiver : BroadcastReceiver() {
                 playerIntent.data = uri
                 context.startService(playerIntent)
             }
-
-            Toast.makeText(context, "WIFI DISCONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.WIFI_OFF, true)
             consumeEventUseCase(EventName.WIFI_ON, false)
         }
@@ -81,7 +77,6 @@ class NetworkChangeReceiver : BroadcastReceiver() {
                 playerIntent.data = uri
                 context.startService(playerIntent)
             }
-            Toast.makeText(context, "MOBILE INET CONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.MOBILE_INET_ON, true)
             consumeEventUseCase(EventName.MOBILE_INET_OFF, false)
         }
@@ -102,7 +97,6 @@ class NetworkChangeReceiver : BroadcastReceiver() {
                 playerIntent.data = uri
                 context.startService(playerIntent)
             }
-            Toast.makeText(context, "MOBILE INET DISCONNECTED", Toast.LENGTH_LONG).show()
             consumeEventUseCase(EventName.MOBILE_INET_OFF, true)
             consumeEventUseCase(EventName.MOBILE_INET_ON, false)
         }
