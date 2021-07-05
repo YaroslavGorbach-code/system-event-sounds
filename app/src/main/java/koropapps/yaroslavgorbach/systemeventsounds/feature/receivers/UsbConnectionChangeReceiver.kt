@@ -22,7 +22,6 @@ class UsbConnectionChangeReceiver : BroadcastReceiver() {
                 && getEventUseCase(EventName.USB_ATTACHED).active
             ) {
                 getEventUseCase(EventName.USB_ATTACHED).textToSpeech?.let { text ->
-                    Log.v("tts", "start service")
                     val speechIntent = Intent(context, TextToSpeechService::class.java)
                     speechIntent.putExtra("MESSAGE", text)
                     context.startService(speechIntent)

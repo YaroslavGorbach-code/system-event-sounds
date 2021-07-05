@@ -3,12 +3,15 @@ package koropapps.yaroslavgorbach.systemeventsounds.feature.ui.events
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import koropapps.yaroslavgorbach.systemeventsounds.R
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.ChangeActiveEventStatusUseCase
+import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.GetEventUseCase
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.GetEventsUseCase
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.usecases.UpdateEventUseCase
+import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.EventName
 import koropapps.yaroslavgorbach.systemeventsounds.data.local.models.SystemEvent
 import koropapps.yaroslavgorbach.systemeventsounds.databinding.FragmentEventsBinding
 import koropapps.yaroslavgorbach.systemeventsounds.feature.services.MediaPlayerService

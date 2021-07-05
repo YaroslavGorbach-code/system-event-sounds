@@ -22,6 +22,7 @@ class MainService : Service() {
     private val headphonesConnectedReceiver: BroadcastReceiver = HeadphonesConnectedReceiver()
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+
         registerReceiver(
             networkChangeReceiver,
             IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)

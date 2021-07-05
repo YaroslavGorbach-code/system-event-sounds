@@ -3,7 +3,6 @@
     <string name="wifi_on">Wifi on</string>
     <string name="wifi_off">Wifi off</string>
     <string name="airplane_mod_on">Airplane mod on</string>
-    <string name="airplane_mod_off">Airplane mod off</string>
     <string name="active">Active</string>
     <string name="not_active">Not active</string>
     <string name="notification_title">Battery sound notifications</string>
@@ -28,4 +27,21 @@
     <string name="pick_file">Pick file</string>
     <string name="create">Update</string>
     <string name="updateEvent">Update event</string>
+    <string name="wifi_on_default_text">You have turned on the wifi</string>
+    <string name="wifi_off_default_text">You have turned off the wifi</string>
+    <string name="mobile_inet_on_default_text">You have turned on mobile internet</string>
+    <string name="mobile_inet_off_default_text">You have turned off mobile internet</string>
+    <string name="airplane_mod_on_default_text">You have turned on airplane mode</string>
+    <string name="airplane_mod_off_default_text">You have turned off airplane mode</string>
+    <string name="bluetooth_on_default_text">You have turned on bluetooth</string>
+    <string name="bluetooth_off_default_text">You have turned off bluetooth</string>
+    <string name="screen_off_default_text">You have turned off the screen</string>
+    <string name="screen_on_default_text">You have turned on the screen</string>
+    <string name="usb_plugged_in_default_text">You have plugged in usb</string>
+    <string name="usb_plugged_out_default_text">You have plugged out usb</string>
+    <string name="app_installed_default_text">You have installed app</string>
+    <string name="app_deleted_default_text">You have deleted app</string>
+    <string name="headphones_plugged_default_text">You have plugged headphones</string>
+    <string name="headphones_unplugged_default_text">You have unplugged headphones</string>
+
 </resources>

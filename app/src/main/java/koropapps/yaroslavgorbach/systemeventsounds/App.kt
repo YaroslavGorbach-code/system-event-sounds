@@ -9,7 +9,7 @@ import koropapps.yaroslavgorbach.systemeventsounds.data.local.repos.RepoImp
 import koropapps.yaroslavgorbach.systemeventsounds.bussines.repos.RepoProvider
 
 class App: Application(), RepoProvider {
-    private val repo: Repo by lazy { RepoImp }
+    private val repo: Repo by lazy { RepoImp.getInstance(applicationContext)}
     override fun provideRepo(): Repo {
         return repo
     }
@@ -30,5 +30,4 @@ class App: Application(), RepoProvider {
             notificationManager.createNotificationChannel(notificationChannel)
         }
     }
-
 }

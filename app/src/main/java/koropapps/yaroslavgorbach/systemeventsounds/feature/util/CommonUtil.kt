@@ -18,4 +18,4 @@ fun Uri.getName(context: Context): String {
     return fileName.toString()
 }
 fun Fragment.getRepo(): Repo = (requireActivity().application as App).provideRepo()
-fun BroadcastReceiver.getRepo(context: Context?): Repo = RepoImp
+fun BroadcastReceiver.getRepo(context: Context): Repo = RepoImp.getInstance(context)

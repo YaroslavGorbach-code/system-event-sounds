@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.commit
 import koropapps.yaroslavgorbach.systemeventsounds.feature.ui.events.EventsFragment
 import koropapps.yaroslavgorbach.systemeventsounds.feature.services.MainService
+import koropapps.yaroslavgorbach.systemeventsounds.feature.workers.RestartMainServiceWorker
 import kotlinx.coroutines.InternalCoroutinesApi
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -19,10 +20,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 add(R.id.main_container, fragment)
                 setPrimaryNavigationFragment(fragment)
             }
+            RestartMainServiceWorker.requestRestart(this)
         }
-        ContextCompat.startForegroundService(
-            this,
-            Intent(this, MainService::class.java)
-        )
     }
 }
