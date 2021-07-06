@@ -10,7 +10,7 @@
     <string name="notification_title">Звуки системных событий</string>
     <string name="notification_message">Приложение работает…</string>
     <string name="ticker_text">Звуки системных событий</string>
-    <string name="mobile_inet_off">Мобильный интернет отключен</string>
+    <string name="mobile_inet_off">Мобильный интернет включен</string>
     <string name="mobile_inet_on">Мобильный интернет выключен</string>
     <string name="bluetooth_on">Bluetooth включен</string>
     <string name="bluetooth_off">Bluetooth выключен</string>
